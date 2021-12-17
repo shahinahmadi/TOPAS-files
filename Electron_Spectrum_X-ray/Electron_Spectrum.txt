@@ -1,0 +1,64 @@
+#---------------------------------- X-ray spectrum--------------------------------
+
+# Authors: Thalat Monajemi, Shahin Ahmadi
+
+
+#************Including X-ray text file*************
+includeFile = Tube.txt                            
+#**************************************************
+
+#----------We put an Air disk in front of applicator for scoring purpose----------
+
+s:Ge/BOX_PHANTOM/Parent="World"
+s:Ge/BOX_PHANTOM/Type="TsBox"
+s:Ge/BOX_PHANTOM/Material="Air"
+d:Ge/BOX_PHANTOM/HLX=6 cm
+d:Ge/BOX_PHANTOM/HLY=9 cm
+d:Ge/BOX_PHANTOM/HLZ=6 cm
+d:Ge/BOX_PHANTOM/TransX=0. cm
+d:Ge/BOX_PHANTOM/TransY=-39.35 cm
+d:Ge/BOX_PHANTOM/TransZ=0. m
+d:Ge/BOX_PHANTOM/RotX=0. deg
+d:Ge/BOX_PHANTOM/RotY=0 deg
+d:Ge/BOX_PHANTOM/RotZ=0. deg
+s:Ge/BOX_PHANTOM/DrawingStyle = "Solid"
+
+
+s:Ge/BOX_PHANTOM/Color="red"
+#--------We score the X-ray in ScoringDisc component-------------
+s:Sc/EnergyScorer/Component = "BOX_PHANTOM"
+s:Sc/EnergyScorer/Quantity = "PhaseSpace"
+s:Sc/EnergyScorer/IfOutputFileAlreadyExists="OverWrite"
+s:Sc/EnergyScorer/Surface = "BOX_PHANTOM/AnySurface"
+sv:Sc/EnergyScorer/OnlyIncludeParticlesCharged = 1 "Negative"
+sv:Sc/EnergyScorer/OnlyIncludeParticlesNamed = 1 "e-"
+i:Sc/EnergyScorer/HistogramBins = 30000
+d:Sc/EnergyScorer/HistogramMin = 0.01 MeV
+d:Sc/EnergyScorer/HistogramMax = 0.1 MeV 
+i:Sc/EnergyScorer/EBins = 30000
+d:Sc/EnergyScorer/EBinMin = 0 MeV
+d:Sc/EnergyScorer/EBinMax = 0.1 MeV
+sc:Sc/EnergyScorer/EBinEnergy = "PreStep"
+s:Sc/EnergyScorer/OutputFile = "MyFile_ElectronSpec"
+s:Sc/EnergyScorer/OutputType = "ROOT"
+
+
+#--------------------GRAPHICS TO VISULIZE THE SIMULATION----------------
+#s:Gr/ViewA/Type             = "OpenGL"
+#Ts/UseQt = "True"
+#i:Gr/ViewA/WindowSizeX      = 1024
+#i:Gr/ViewA/WindowSizeY      = 768
+#d:Gr/ViewA/Theta            = 90 deg
+#d:Gr/ViewA/Phi              = 0 deg
+#s:Gr/ViewA/Projection       = "Perspective"
+#d:Gr/ViewA/PerspectiveAngle = 90.0 deg
+#b:Gr/ViewA/IncludeGeometry = "True" 	
+#b:Gr/ViewA/IncludeTrajectories = "True"
+#b:Gr/ViewA/IncludeAxes = "True"
+#u:Gr/ViewA/Zoom=3
+#b:Gr/ViewA/CopyOpenGLToPDF="True"
+#s:Gr/ViewA/FileName = "MyGeo"
+#s:Gr/RefreshEvery = "Run" 
+
+
+

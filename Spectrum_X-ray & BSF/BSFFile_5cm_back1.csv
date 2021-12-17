@@ -1,0 +1,6 @@
+# TOPAS Version: 3.7
+# Parameter File: 5cm_Backscatter_1.txt
+# Results for scorer dose
+# Scored in component: dosegrid
+# DoseToWater ( Gy ) : Sum   Mean   Count_in_Bin   Second_Moment   Variance   Standard_Deviation   Min   Max   
+1.862371473476928e-16, 1.659867586904094e-19, 4, 1.252149986413053e-32, 1.116993743454998e-35, 3.342145633354414e-18, 1.395559767767353e-22, 7.493059350302805e-17

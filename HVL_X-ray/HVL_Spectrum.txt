@@ -1,0 +1,130 @@
+#-------------------HVL data--------------------------------------------------------
+
+# Authors: Thalat Monajemi, Shahin Ahmadi
+
+
+#************Including X-ray text file*************
+includeFile = Tube.txt                            
+#**************************************************
+
+
+#--------------Definition of the filter between cone and collimator-------------------
+
+s:Ge/AlFilter2/Parent="World"
+s:Ge/AlFilter2/Type="TsCylinder"
+s:Ge/AlFilter2/Material="G4_Al"
+d:Ge/AlFilter2/RMin=0 cm
+d:Ge/AlFilter2/RMax=3 cm
+d:Ge/AlFilter2/HL=0.3 cm
+d:Ge/AlFilter2/SPhi=0 deg
+d:Ge/AlFilter2/DPhi=360 deg
+d:Ge/AlFilter2/TransX=0 cm
+d:Ge/AlFilter2/TransY=-30.9 cm
+d:Ge/AlFilter2/TransZ=0 cm
+d:Ge/AlFilter2/RotX=90 deg
+d:Ge/AlFilter2/RotY=0 deg
+d:Ge/AlFilter2/RotZ=0 deg
+s:Ge/AlFilter2/Color="blue"
+s:Ge/AlFilter2/DrawingStyle = "Solid"
+#-----------------------------------------------------------------------------------
+
+
+
+#---------------Definition of the collimator between cone and box-------------------
+
+s:Ge/Collimator2/Parent="World"
+s:Ge/Collimator2/Type="TsCylinder"
+s:Ge/Collimator2/Material="G4_Pb"
+d:Ge/Collimator2/RMin= 1.5 cm
+d:Ge/Collimator2/RMax=30 cm
+d:Ge/Collimator2/HL=0.3 cm
+d:Ge/Collimator2/SPhi=0 deg
+d:Ge/Collimator2/DPhi=360 deg
+d:Ge/Collimator2/TransX=0 cm
+# We put this collimator in 1cm distance from the bottom of the cone
+d:Ge/Collimator2/TransY=-31.7 cm
+d:Ge/Collimator2/TransZ=0 cm
+d:Ge/Collimator2/RotX=90 deg
+d:Ge/Collimator2/RotY=0 deg
+d:Ge/Collimator2/RotZ=0 deg
+s:Ge/Collimator2/Color="White"
+s:Ge/Collimator2/DrawingStyle = "Solid"
+#--------------------------------------------------------------------------------------
+
+
+
+#--------------------Definition of the phantom box-----------------------------------
+
+s:Ge/BOX_PHANTOM/Parent="World"
+s:Ge/BOX_PHANTOM/Type="TsBox"
+s:Ge/BOX_PHANTOM/Material="Air"
+d:Ge/BOX_PHANTOM/HLX=1 cm
+d:Ge/BOX_PHANTOM/HLY=1 cm
+d:Ge/BOX_PHANTOM/HLZ=1 cm
+d:Ge/BOX_PHANTOM/TransX=0. m
+# Distance of the air box from the bottom of the cone is 30 cm. We can set it to 50 cm as well.
+d:Ge/BOX_PHANTOM/TransY=-71.35 cm 
+d:Ge/BOX_PHANTOM/TransZ=0. m
+d:Ge/BOX_PHANTOM/RotX=0. deg
+d:Ge/BOX_PHANTOM/RotY=0 deg
+d:Ge/BOX_PHANTOM/RotZ=0. deg
+s:Ge/BOX_PHANTOM/DrawingStyle = "Solid"
+s:Ge/BOX_PHANTOM/Color="red"
+
+#--------------------------- Dose grid for 1D HVL-----------------------------------
+s:Ge/dosegrid/Parent="BOX_PHANTOM"
+s:Ge/dosegrid/Type="TsBox"
+d:Ge/dosegrid/HLX=1 cm
+d:Ge/dosegrid/HLY=1 cm
+d:Ge/dosegrid/HLZ=1 cm
+d:Ge/dosegrid/TransX=0. m
+d:Ge/dosegrid/TransY=0 cm
+d:Ge/dosegrid/TransZ=0. m
+d:Ge/dosegrid/RotX=0. deg
+d:Ge/dosegrid/RotY=0 deg
+d:Ge/dosegrid/RotZ=0. deg
+i:Ge/dosegrid/XBins=1
+i:Ge/dosegrid/YBins=1
+i:Ge/dosegrid/ZBins=1
+b:Ge/dosegrid/IsParallel = "T"
+s:Ge/dosegrid/Color="blue"
+#------------------------------------------------------------------------------------
+
+
+#--------------------------------Scoring---------------------------------------------
+s:Sc/Spec/Component="dosegrid"
+s:Sc/Spec/Quantity ="PhaseSpace"
+sv:Sc/Spec/OnlyIncludeParticlesCharged = 1 "Neutral"
+s:Sc/Spec/Surface = "dosegrid/AnySurface"
+i:Sc/Spec/HistogramBins = 30000
+d:Sc/Spec/HistogramMin = 0.01 MeV
+d:Sc/Spec/HistogramMax = 0.1 MeV 
+i:Sc/Spec/EBins = 30000
+d:Sc/Spec/EBinMin = 0 MeV
+d:Sc/Spec/EBinMax = 0.1 MeV
+sc:Sc/Spec/EBinEnergy = "PreStep"
+s:Sc/Spec/OutputFile                = "HVL_SpectrumFile6"
+s:Sc/Spec/OutputType                = "ROOT"
+s:Sc/Spec/IfOutputFileAlreadyExists = "Overwrite"
+#------------------------------------------------------------------------------------
+
+
+#--------------------GRAPHICS TO VISULIZE THE SIMULATION-----------------------------
+s:Gr/ViewA/Type             = "OpenGL"
+Ts/UseQt = "True"
+i:Gr/ViewA/WindowSizeX      = 1024
+i:Gr/ViewA/WindowSizeY      = 768
+d:Gr/ViewA/Theta            = 90 deg
+d:Gr/ViewA/Phi              = 0 deg
+s:Gr/ViewA/Projection       = "Perspective"
+d:Gr/ViewA/PerspectiveAngle = 90.0 deg
+b:Gr/ViewA/IncludeGeometry = "True" 	
+b:Gr/ViewA/IncludeTrajectories = "True"
+b:Gr/ViewA/IncludeAxes = "True"
+u:Gr/ViewA/Zoom=3
+b:Gr/ViewA/CopyOpenGLToPDF="True"
+s:Gr/ViewA/FileName = "MyGeo"
+s:Gr/RefreshEvery = "Run" 
+#------------------------------------------------------------------------------------
+
+

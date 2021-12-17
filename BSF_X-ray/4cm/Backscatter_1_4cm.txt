@@ -1,0 +1,76 @@
+#-------------------Backscattering data--------------------------------------------------------
+
+# Authors: Thalat Monajemi, Shahin Ahmadi
+
+
+#************Including X-ray text file*************
+includeFile = Tube4cm.txt                            
+#**************************************************
+
+#--------------------Definition of the phantom box-----------------------------------
+
+s:Ge/BOX_PHANTOM/Parent="World"
+s:Ge/BOX_PHANTOM/Type="TsBox"
+s:Ge/BOX_PHANTOM/Material="G4_WATER"
+d:Ge/BOX_PHANTOM/HLX=0.25 cm
+d:Ge/BOX_PHANTOM/HLY=0.25 cm
+d:Ge/BOX_PHANTOM/HLZ=0.25 cm
+d:Ge/BOX_PHANTOM/TransX=0. m
+d:Ge/BOX_PHANTOM/TransY=-30.60 cm
+d:Ge/BOX_PHANTOM/TransZ=0. m
+d:Ge/BOX_PHANTOM/RotX=0. deg
+d:Ge/BOX_PHANTOM/RotY=0 deg
+d:Ge/BOX_PHANTOM/RotZ=0. deg
+s:Ge/BOX_PHANTOM/DrawingStyle = "Solid"
+s:Ge/BOX_PHANTOM/Color="red"
+
+#--------------------------- Dose grid for BSF-----------------------------------
+s:Ge/dosegrid/Parent="BOX_PHANTOM"
+s:Ge/dosegrid/Type="TsBox"
+d:Ge/dosegrid/HLX=0.25 cm
+d:Ge/dosegrid/HLY=0.25 cm
+d:Ge/dosegrid/HLZ=0.25 cm
+d:Ge/dosegrid/TransX=0. m
+d:Ge/dosegrid/TransY=0 cm
+d:Ge/dosegrid/TransZ=0. m
+d:Ge/dosegrid/RotX=0. deg
+d:Ge/dosegrid/RotY=0 deg
+d:Ge/dosegrid/RotZ=0. deg
+i:Ge/dosegrid/XBins=1
+i:Ge/dosegrid/YBins=1
+i:Ge/dosegrid/ZBins=1
+b:Ge/dosegrid/IsParallel = "T"
+s:Ge/dosegrid/Color="blue"
+#------------------------------------------------------------------------------------
+
+#--------------------------------Scoring---------------------------------------------
+s:Sc/dose/Quantity                  = "DoseToWater"
+s:Sc/dose/Component                 = "dosegrid"
+sv:Sc/dose/OnlyIncludeParticlesCharged = 1 "Neutral"
+s:Sc/dose/OutputFile                = "BSFFile_4cm_back1"
+s:Sc/dose/OutputType                = "csv"
+b:Sc/dose/OutputToConsole           = "F"
+b:Sc/dose/Visualize                 = "F"
+s:Sc/dose/IfOutputFileAlreadyExists = "Overwrite"
+#------------------------------------------------------------------------------------
+
+
+#--------------------GRAPHICS TO VISULIZE THE SIMULATION-----------------------------
+#s:Gr/ViewA/Type             = "OpenGL"
+#Ts/UseQt = "True"
+#i:Gr/ViewA/WindowSizeX      = 1024
+#i:Gr/ViewA/WindowSizeY      = 768
+#d:Gr/ViewA/Theta            = 90 deg
+#d:Gr/ViewA/Phi              = 0 deg
+#s:Gr/ViewA/Projection       = "Perspective"
+#d:Gr/ViewA/PerspectiveAngle = 90.0 deg
+#b:Gr/ViewA/IncludeGeometry = "True" 	
+#b:Gr/ViewA/IncludeTrajectories = "True"
+#b:Gr/ViewA/IncludeAxes = "True"
+#u:Gr/ViewA/Zoom=3
+#b:Gr/ViewA/CopyOpenGLToPDF="True"
+#s:Gr/ViewA/FileName = "MyGeo"
+#s:Gr/RefreshEvery = "Run" 
+#------------------------------------------------------------------------------------
+
+

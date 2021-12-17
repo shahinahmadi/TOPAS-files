@@ -1,0 +1,296 @@
+# Simulation of X-ray tube
+# Authors: Thalat Monajemi, Shahin Ahmadi
+
+#-----------------------------Definition of vacuum----------------------
+sv:Ma/Vacuum/Components = 4 "Carbon" "Nitrogen" "Oxygen" "Argon"
+uv:Ma/Vacuum/Fractions = 4 0.000124 0.755268 0.231781 0.012827
+d:Ma/Vacuum/Density = 1.0E-25 g/cm3
+s:Ma/Vacuum/State = "Gas"
+d:Ma/Vacuum/Temperature = 2.73 kelvin
+d:Ma/Vacuum/Pressure = 3.0E-18 pascal
+s:Ma/Vacuum/DefaultColor = "skyblue"
+#-----------------------------------------------------------------------
+
+
+#--------------------Definition of the world----------------------------
+
+s:Ge/World/Type="TsBox"
+s:Ge/World/Material="Vacuum"
+d:Ge/World/HLX=500 cm
+d:Ge/World/HLY=500 cm
+d:Ge/World/HLZ=500 cm
+d:Ge/World/TransX=0. m
+d:Ge/World/TransY=0. m
+d:Ge/World/TransZ=0. m
+d:Ge/World/RotX=0. deg
+d:Ge/World/RotY=0 deg
+d:Ge/World/RotZ=0. deg
+#-----------------------------------------------------------------------
+
+
+#---------Definition of the right tube----------------------------------
+
+s:Ge/TestCylinder/Parent="World"
+s:Ge/TestCylinder/Type="TsCylinder"
+s:Ge/TestCylinder/Material="G4_Pb"
+d:Ge/TestCylinder/RMin=8 cm
+d:Ge/TestCylinder/RMax=9 cm
+d:Ge/TestCylinder/HL=1.25 cm
+d:Ge/TestCylinder/SPhi=0 deg
+d:Ge/TestCylinder/DPhi=360 deg
+d:Ge/TestCylinder/TransX=0 cm
+d:Ge/TestCylinder/TransY=0 cm
+d:Ge/TestCylinder/TransZ=-2.5 cm
+d:Ge/TestCylinder/RotX=0 deg
+d:Ge/TestCylinder/RotY=0 deg
+d:Ge/TestCylinder/RotZ=0 deg
+s:Ge/TestCylinder/Color="white"
+s:Ge/TestCylinder/DrawingStyle = "Solid"
+#-------------------------------------------------------------------------
+
+
+#--------Definition of the middle cylinder (top and large segment) -------
+
+s:Ge/TestCylinderMiddleTop/Parent="World"
+s:Ge/TestCylinderMiddleTop/Type="TsCylinder"
+s:Ge/TestCylinderMiddleTop/Material="G4_Pb"
+d:Ge/TestCylinderMiddleTop/RMin=8 cm
+d:Ge/TestCylinderMiddleTop/RMax=9 cm
+d:Ge/TestCylinderMiddleTop/HL=1.25 cm
+d:Ge/TestCylinderMiddleTop/SPhi=300 deg
+d:Ge/TestCylinderMiddleTop/DPhi=300 deg
+d:Ge/TestCylinderMiddleTop/TransX=0 cm
+d:Ge/TestCylinderMiddleTop/TransY=0 cm
+d:Ge/TestCylinderMiddleTop/TransZ=0 cm
+d:Ge/TestCylinderMiddleTop/RotX=0 deg
+d:Ge/TestCylinderMiddleTop/RotY=0 deg
+d:Ge/TestCylinderMiddleTop/RotZ=0 deg
+s:Ge/TestCylinderMiddleTop/Color="white"
+#s:Ge/TestCylinderMiddleTop/DrawingStyle = "Solid"
+#--------------------------------------------------------------------------
+
+
+#---------Definition of the middle cylinder, which represnts the window (below and small segment) -------------------
+
+s:Ge/TestCylinderMiddleBelow/Parent="World"
+s:Ge/TestCylinderMiddleBelow/Type="TsCylinder"
+s:Ge/TestCylinderMiddleBelow/Material="G4_Be"
+d:Ge/TestCylinderMiddleBelow/RMin=8.6 cm
+d:Ge/TestCylinderMiddleBelow/RMax=9 cm
+d:Ge/TestCylinderMiddleBelow/HL=1.25 cm
+d:Ge/TestCylinderMiddleBelow/SPhi=240 deg
+d:Ge/TestCylinderMiddleBelow/DPhi=60 deg
+d:Ge/TestCylinderMiddleBelow/TransX=0 cm
+d:Ge/TestCylinderMiddleBelow/TransY=0 cm
+d:Ge/TestCylinderMiddleBelow/TransZ=0 cm
+d:Ge/TestCylinderMiddleBelow/RotX=0 deg
+d:Ge/TestCylinderMiddleBelow/RotY=0 deg
+d:Ge/TestCylinderMiddleBelow/RotZ=0 deg
+s:Ge/TestCylinderMiddleBelow/Color="yellow"
+#s:Ge/TestCylinderMiddleBelow/DrawingStyle = "Solid"
+#---------------------------------------------------------------------------------------
+
+
+#---------Definition of the left tube---------------------------------------------------
+
+s:Ge/TestCylinderLeft/Parent="World"
+s:Ge/TestCylinderLeft/Type="TsCylinder"
+s:Ge/TestCylinderLeft/Material="Vacuum"
+d:Ge/TestCylinderLeft/RMin=8 cm
+d:Ge/TestCylinderLeft/RMax=9 cm
+d:Ge/TestCylinderLeft/HL=1.25 cm
+d:Ge/TestCylinderLeft/SPhi=0 deg
+d:Ge/TestCylinderLeft/DPhi=360 deg
+d:Ge/TestCylinderLeft/TransX=0 cm
+d:Ge/TestCylinderLeft/TransY=0 cm
+d:Ge/TestCylinderLeft/TransZ=2.5 cm
+d:Ge/TestCylinderLeft/RotX=0 deg
+d:Ge/TestCylinderLeft/RotY=0 deg
+d:Ge/TestCylinderLeft/RotZ=0 deg
+s:Ge/TestCylinderLeft/Color="white"
+s:Ge/TestCylinderLeft/DrawingStyle = "Solid"
+#---------------------------------------------------------------------------------------
+
+
+#----------Right cap of the tube--------------------------------------------------------
+s:Ge/Right_cap/Parent="World"
+s:Ge/Right_cap/Type="TsCylinder"
+s:Ge/Right_cap/Material="G4_Pb"
+d:Ge/Right_cap/RMin=0 cm
+d:Ge/Right_cap/RMax=7.999 cm
+d:Ge/Right_cap/HL=0.1 cm
+d:Ge/Right_cap/SPhi=0 deg
+d:Ge/Right_cap/DPhi=360 deg
+d:Ge/Right_cap/TransX=0 cm
+d:Ge/Right_cap/TransY=0 cm
+d:Ge/Right_cap/TransZ=3.75 cm
+d:Ge/Right_cap/RotX=0 deg
+d:Ge/Right_cap/RotY=0 deg
+d:Ge/Right_cap/RotZ=0 deg
+s:Ge/Right_cap/Color="White"
+s:Ge/Right_cap/DrawingStyle = "Solid"
+#--------------------------------------------------------------------------------------
+
+
+#----------Left cap of the tube--------------------------------------------------------
+
+s:Ge/Left_cap/Parent="World"
+s:Ge/Left_cap/Type="TsCylinder"
+s:Ge/Left_cap/Material="G4_Pb"
+d:Ge/Left_cap/RMin=0 cm
+d:Ge/Left_cap/RMax=7.999 cm
+d:Ge/Left_cap/HL=0.1 cm
+d:Ge/Left_cap/SPhi=0 deg
+d:Ge/Left_cap/DPhi=360 deg
+d:Ge/Left_cap/TransX=0 cm
+d:Ge/Left_cap/TransY=0 cm
+d:Ge/Left_cap/TransZ=-3.75 cm
+d:Ge/Left_cap/RotX=0 deg
+d:Ge/Left_cap/RotY=0 deg
+d:Ge/Left_cap/RotZ=0 deg
+s:Ge/Left_cap/Color="White"
+s:Ge/Left_cap/DrawingStyle = "Solid"
+#--------------------------------------------------------------------------------------
+
+
+#-------------------Definition of the material of tungsten-----------------------------
+#We define Tungsten element
+s:El/Tungsten/Symbol="W"
+
+# We asign Tungsten to the target
+sv:Ma/Target/Components  = 1 "Tungsten"
+uv:Ma/Target/Fractions   = 1 1.0
+d:Ma/Target/Density      = 19.25 g/cm3
+s:Ma/Target/DefaultColor = "green"
+#-------------------------------------------------------------------------------------
+
+
+#----------------------Definition of the tungstan ------------------------------------
+
+s:Ge/Target/Type="TsBox"
+s:Ge/Target/Parent = "World"
+s:Ge/Target/Material = "Target"
+d:Ge/Target/HLX=1.1 cm
+d:Ge/Target/HLY=1.1 cm
+d:Ge/Target/HLZ=0.1 cm
+d:Ge/Target/TransX=0. cm
+d:Ge/Target/TransY=1. cm
+d:Ge/Target/TransZ=-0.25 cm
+d:Ge/Target/RotX=-30. deg
+d:Ge/Target/RotY=0. deg
+d:Ge/Target/RotZ=0. deg
+s:Ge/Target/DrawingStyle = "Solid"
+#------------------------------------------------------------------------------------
+
+
+
+#-------------------------Electron source Position-----------------------------------
+s:Ge/BeamPosition/Parent="World"
+s:Ge/BeamPosition/Type="Group"
+d:Ge/BeamPosition/TransX=0. cm
+d:Ge/BeamPosition/TransY=1.0 cm
+d:Ge/BeamPosition/TransZ=2. cm
+d:Ge/BeamPosition/RotX=180. deg
+d:Ge/BeamPosition/RotY =0. deg
+d:Ge/BeamPosition/RotZ =0. deg
+#------------------------------------------------------------------------------------
+
+
+
+
+
+
+#-------------------------Electron source-------------------------------------------
+
+s:So/Demo/Type ="Beam" 
+s:So/Demo/Component = "BeamPosition"
+s:So/Demo/BeamParticle = "e-"
+d:So/Demo/BeamEnergy = 100 keV
+s:So/Demo/BeamPositionDistribution = "Flat"
+s:So/Demo/BeamPositionCutoffShape = "Rectangle"
+d:So/Demo/BeamPositionCutoffX = 0.25 cm
+d:So/Demo/BeamPositionCutoffY = 0.25 cm
+i:So/Demo/NumberOfHistoriesInRun =30000000
+b:Ts/PauseBeforeQuit = "True"
+i:Ts/NumberOfThreads=5
+#----------------------------------------------------------------------------------
+
+#This occurs everywhere
+b:Vr/UseVarianceReduction = "true"    
+s:Vr/CrossectionEnhancement/Type   = "CrosssectionEnhancement"
+sv:Vr/CrossectionEnhancement/processesNamed    = 1 "eBrem"
+uv:Vr/CrossectionEnhancement/EnhancementFactor = 1 500
+#----------------------------------------------------------------------------------
+
+
+
+#---------Difinition of the filter between window and cone-------------------------
+
+s:Ge/AlFilter/Parent="World"
+s:Ge/AlFilter/Type="TsCylinder"
+s:Ge/AlFilter/Material="G4_Al"
+d:Ge/AlFilter/RMin=0 cm
+d:Ge/AlFilter/RMax=1.2 cm
+d:Ge/AlFilter/HL=0.1 cm
+d:Ge/AlFilter/SPhi=0 deg
+d:Ge/AlFilter/DPhi=360 deg
+d:Ge/AlFilter/TransX=0 cm
+d:Ge/AlFilter/TransY=-9.2 cm
+d:Ge/AlFilter/TransZ=0 cm
+d:Ge/AlFilter/RotX=90 deg
+d:Ge/AlFilter/RotY=0 deg
+d:Ge/AlFilter/RotZ=0 deg
+s:Ge/AlFilter/Color="blue"
+s:Ge/AlFilter/DrawingStyle = "Solid"
+#-----------------------------------------------------------------------------------
+
+
+#-----------------------Definition of the cone -------------------------------------
+s:Ge/LeftEndCone/Type = "G4Cons"
+s:Ge/LeftEndCone/Parent = "World"
+s:Ge/LeftEndCone/Material = "G4_Cu"
+d:Ge/LeftEndCone/TransX = 0 cm
+d:Ge/LeftEndCone/TransY = -20.1 cm
+d:Ge/LeftEndCone/TransZ =  0 cm
+d:Ge/LeftEndCone/RotX = -90 deg
+d:Ge/LeftEndCone/RotY =  0 deg
+d:Ge/LeftEndCone/RotZ = 0 deg
+d:Ge/LeftEndCone/RMin1 = 0.8 cm
+d:Ge/LeftEndCone/RMax1 = 1.2 cm
+d:Ge/LeftEndCone/RMin2 = 2 cm
+d:Ge/LeftEndCone/RMax2 = 2.4 cm
+d:Ge/LeftEndCone/HL =  10 cm
+d:Ge/LeftEndCone/SPhi = 0 deg
+d:Ge/LeftEndCone/DPhi = 360 deg
+s:Ge/LeftEndCone/Color = "brown"
+#s:Ge/LeftEndCone/DrawingStyle = "FullWireFrame"
+s:Ge/LeftEndCone/DrawingStyle = "Solid"
+#-----------------------------------------------------------------------------------
+
+
+#---------------------------Ignoring the overlaps-----------------------------------
+b:Ge/QuitIfOverlapDetected="False"
+#-----------------------------------------------------------------------------------
+
+
+#--------------Collimator in between tube and cone------------------------------------------
+s:Ge/Collimator/Parent="World"
+s:Ge/Collimator/Type="TsCylinder"
+s:Ge/Collimator/Material="G4_Pb"
+d:Ge/Collimator/RMin= 1 cm
+d:Ge/Collimator/RMax=30 cm
+d:Ge/Collimator/HL=0.3 cm
+d:Ge/Collimator/SPhi=0 deg
+d:Ge/Collimator/DPhi=360 deg
+d:Ge/Collimator/TransX=0 cm
+d:Ge/Collimator/TransY=-9.6 cm
+d:Ge/Collimator/TransZ=0 cm
+d:Ge/Collimator/RotX=90 deg
+d:Ge/Collimator/RotY=0 deg
+d:Ge/Collimator/RotZ=0 deg
+s:Ge/Collimator/Color="White"
+s:Ge/Collimator/DrawingStyle = "Solid"
+#--------------------------------------------------------------------------------------
+
+
+
